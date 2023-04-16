@@ -12,13 +12,13 @@
       <AnchorPane prefHeight="200.0" prefWidth="379.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="logout" layoutX="309.0" layoutY="160.0" mnemonicParsing="false" onAction="#LogOut" text="Log out" />
-            <Button fx:id="logout1" layoutX="307.0" layoutY="14.0" mnemonicParsing="false" onAction="#LogOut" text="Start Task" />
-            <Button fx:id="logout11" layoutX="307.0" layoutY="87.0" mnemonicParsing="false" onAction="#LogOut" text="End Task" />
+            <Button fx:id="startTask" layoutX="307.0" layoutY="14.0" mnemonicParsing="false" text="Start Task" />
+            <Button fx:id="endTask" layoutX="307.0" layoutY="87.0" mnemonicParsing="false" text="End Task" />
             <Label layoutX="24.0" layoutY="52.0" text="Started _ Task" />
             <ComboBox fx:id="comboBox" layoutX="22.0" layoutY="14.0" prefWidth="150.0" promptText="Choose a task" />
             <TextField fx:id="newTask" layoutX="81.0" layoutY="99.0" promptText="add a task" />
             <Label layoutX="22.0" layoutY="103.0" text="New Task:" />
-            <Button fx:id="logout111" layoutX="29.0" layoutY="134.0" mnemonicParsing="false" onAction="#LogOut" text="Add" />
+            <Button fx:id="addTask" layoutX="29.0" layoutY="134.0" mnemonicParsing="false" text="Add" />
          </children>
       </AnchorPane>
    </center>
