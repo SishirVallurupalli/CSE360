@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Menu">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="379.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="effortLogger" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" onAction="#EffortLoggerAction" text="EffortLogger" />
+            <Button fx:id="defectLogger" layoutX="24.0" layoutY="88.0" mnemonicParsing="false" text="DefectLogger" />
+            <Button fx:id="logout" layoutX="24.0" layoutY="160.0" mnemonicParsing="false" onAction="#LogOut" text="Log out" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
