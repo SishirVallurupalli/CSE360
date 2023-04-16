@@ -20,10 +20,10 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception{
 		stg = primaryStage;
-		primaryStage.setResizable(false);
+		primaryStage.setResizable(true);
 		Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
 		primaryStage.setTitle("Effort Logger");
-		primaryStage.setScene(new Scene(root, 300, 300));
+		primaryStage.setScene(new Scene(root, 1000, 300));
 		primaryStage.show();
 
 	}

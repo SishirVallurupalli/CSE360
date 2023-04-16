@@ -39,9 +39,9 @@ public class Menu {
 		m.changeScene("EffortLogger.fxml");
 	}
 //	
-//	public void DeffectLogger(ActionEvent event) throws IOException
-//	{
-//		Main m = new Main();
-////		m.changeScene("DeffectLogger.fxml");
-//	}
+	public void DeffectLogger(ActionEvent event) throws IOException
+	{
+		Main m = new Main();
+		m.changeScene("DeffectLogger.fxml");
+	}
 }
