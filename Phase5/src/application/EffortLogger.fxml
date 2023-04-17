@@ -8,18 +8,19 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EffortLogger">
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="379.0" BorderPane.alignment="CENTER">
+   <top>
+      <AnchorPane prefHeight="229.0" prefWidth="411.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="logout" layoutX="309.0" layoutY="160.0" mnemonicParsing="false" onAction="#LogOut" text="Log out" />
-            <Button fx:id="startTask" layoutX="307.0" layoutY="14.0" mnemonicParsing="false" text="Start Task" />
-            <Button fx:id="endTask" layoutX="307.0" layoutY="87.0" mnemonicParsing="false" text="End Task" />
-            <Label layoutX="24.0" layoutY="52.0" text="Started _ Task" />
+            <Button fx:id="logout" layoutX="291.0" layoutY="160.0" mnemonicParsing="false" onAction="#LogOut" text="Log out" />
+            <Button fx:id="startTask" layoutX="285.0" layoutY="14.0" mnemonicParsing="false" onAction="#startTask" text="Start Task" />
+            <Button fx:id="endTask" layoutX="287.0" layoutY="86.0" mnemonicParsing="false" onAction="#endTask" text="End Task" />
             <ComboBox fx:id="comboBox" layoutX="22.0" layoutY="14.0" prefWidth="150.0" promptText="Choose a task" />
-            <TextField fx:id="newTask" layoutX="81.0" layoutY="99.0" promptText="add a task" />
+            <TextField fx:id="newTask" layoutX="92.0" layoutY="99.0" promptText="add a task" />
             <Label layoutX="22.0" layoutY="103.0" text="New Task:" />
-            <Button fx:id="addTask" layoutX="29.0" layoutY="134.0" mnemonicParsing="false" text="Add" />
+            <Button fx:id="addTask" layoutX="29.0" layoutY="134.0" mnemonicParsing="false" onAction="#addInputToComboBox" text="Add" />
+            <Label fx:id="time" layoutX="97.0" layoutY="57.0" text="0" />
+            <Label layoutX="22.0" layoutY="57.0" text="Time Spent" />
          </children>
       </AnchorPane>
-   </center>
+   </top>
 </BorderPane>
