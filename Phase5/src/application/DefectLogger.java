@@ -45,7 +45,8 @@ private TextField textInput;
 	}
 	@FXML
 	void goToEffortLogger(ActionEvent event) throws IOException {
-	    changeScene("EffortLogger.fxml");
+	    Main m = new Main();
+	    m.changeScene("EffortLogger.fxml");
 	}
 
 	public void start(Stage primaryStage) throws Exception{

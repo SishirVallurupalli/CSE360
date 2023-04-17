@@ -23,7 +23,7 @@ public class Main extends Application {
 		primaryStage.setResizable(true);
 		Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
 		primaryStage.setTitle("Effort Logger");
-		primaryStage.setScene(new Scene(root, 1000, 300));
+		primaryStage.setScene(new Scene(root, 300, 300));
 		primaryStage.show();
 
 	}
