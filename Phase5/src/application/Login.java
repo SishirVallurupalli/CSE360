@@ -32,6 +32,13 @@ public class Login {
 	@FXML
 	private TextField password;
 	
+	public static String  userName;
+	
+	public static String getUserName()
+	{
+		return userName;
+	}
+	
 	
 	public void login(ActionEvent event) throws IOException{
 		Main m = new Main();
@@ -39,6 +46,7 @@ public class Login {
 		if (username.getText().toString().equals("admin") && password.getText().toString().equals("123"))
 		{
 			wrongLogIn.setText("Success!");
+			userName = "admin";
 			
 			m.changeScene("Menu.fxml");
 		}
@@ -49,5 +57,7 @@ public class Login {
 		
 		
 	}
+	
+
 	
 }
