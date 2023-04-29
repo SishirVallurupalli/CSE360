@@ -10,7 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import java.util.ArrayList;
 
 
 public class Main extends Application {
@@ -34,35 +34,45 @@ public class Main extends Application {
 		stg.getScene().setRoot(pane);
 	}
 	
-	public static String userName;
-	public static String password;
-	public static String empCode;
-	
 	public String getUserName()
 	{
-		return userName;
+		return currentUser.getUserName();
 	}
+	
+	public static ArrayList<UserInfo> users;
+	
+	public static UserInfo currentUser;
 	
 	public void setPassword(String pass)
 	{
-		password = pass;
+		currentUser.setPassword(pass);;
 	}
 	
 	public String getPassword()
 	{
-		return password;
+		return currentUser.getPassword();
 	}
 	
 	public String getEmpCode()
 	{
-		return empCode;
+		return currentUser.getEmpCode();
 	}
 	
+	public ArrayList<UserInfo> getUsers()
+	{
+		return users;
+	}
+	
+	public void setCurrentUser(UserInfo u)
+	{
+		currentUser = u;
+	}
 	
 	public static void main(String[] args) {
-		userName = "admin";
-		password = "123";
-		empCode = "123";
+		users = new ArrayList<UserInfo>();
+		UserInfo user = new UserInfo("admin", "123", "123");
+		users.add(user);
+		currentUser = new UserInfo();
 		launch(args);
 	}
 	

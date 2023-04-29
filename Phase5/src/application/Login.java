@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Login {
 	public Login()
@@ -41,17 +42,23 @@ public class Login {
 	public void login(ActionEvent event) throws IOException{
 		Main m = new Main();
 		
-		if (username.getText().toString().equals(m.getUserName()) && passwordText.getText().toString().equals(m.getPassword()))
+		ArrayList<UserInfo> users = m.getUsers();
+		
+		String user = username.getText().toString();
+		String pass = passwordText.getText().toString();
+		for (int x = 0; x < users.size(); x++)
 		{
-			wrongLogIn.setText("Success!");
-			
-			
-			m.changeScene("Menu.fxml");
+			if (users.get(x).getUserName().equals(user))
+			{
+				if (users.get(x).getPassword().equals(pass))
+				{
+					m.setCurrentUser(users.get(x));
+					m.changeScene("Menu.fxml");
+					break;
+				}
+			}
 		}
-		else
-		{
-			wrongLogIn.setText("Wrong Log In!");
-		}
+		wrongLogIn.setText("Wrong Log In Information");
 		
 		
 	}
