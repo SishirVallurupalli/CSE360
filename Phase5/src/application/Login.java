@@ -30,23 +30,21 @@ public class Login {
 	private TextField username;
 	
 	@FXML
-	private TextField password;
+	private TextField passwordText;
 	
-	public static String  userName;
+	@FXML
+	private Button resetPassword;
 	
-	public static String getUserName()
-	{
-		return userName;
-	}
+
 	
 	
 	public void login(ActionEvent event) throws IOException{
 		Main m = new Main();
 		
-		if (username.getText().toString().equals("admin") && password.getText().toString().equals("123"))
+		if (username.getText().toString().equals(m.getUserName()) && passwordText.getText().toString().equals(m.getPassword()))
 		{
 			wrongLogIn.setText("Success!");
-			userName = "admin";
+			
 			
 			m.changeScene("Menu.fxml");
 		}
@@ -57,5 +55,12 @@ public class Login {
 		
 		
 	}
+	
+	public void ResetPassword(ActionEvent event) throws IOException{
+		Main m = new Main();
+		m.changeScene("ResetPassword.fxml");
+	}
+	
+	
 
 }

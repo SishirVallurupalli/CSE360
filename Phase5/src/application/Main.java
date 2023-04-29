@@ -34,7 +34,35 @@ public class Main extends Application {
 		stg.getScene().setRoot(pane);
 	}
 	
+	public static String userName;
+	public static String password;
+	public static String empCode;
+	
+	public String getUserName()
+	{
+		return userName;
+	}
+	
+	public void setPassword(String pass)
+	{
+		password = pass;
+	}
+	
+	public String getPassword()
+	{
+		return password;
+	}
+	
+	public String getEmpCode()
+	{
+		return empCode;
+	}
+	
+	
 	public static void main(String[] args) {
+		userName = "admin";
+		password = "123";
+		empCode = "123";
 		launch(args);
 	}
 	
