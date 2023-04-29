@@ -36,7 +36,8 @@ public class Login {
 	@FXML
 	private Button resetPassword;
 	
-
+	@FXML
+	private Button signUp;
 	
 	
 	public void login(ActionEvent event) throws IOException{
@@ -68,6 +69,9 @@ public class Login {
 		m.changeScene("ResetPassword.fxml");
 	}
 	
-	
+	public void SignUp(ActionEvent event) throws IOException{
+		Main m = new Main();
+		m.changeScene("SignUp.fxml");
+	}
 
 }

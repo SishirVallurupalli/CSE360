@@ -21,7 +21,7 @@ public class Main extends Application {
 		primaryStage.setResizable(true);
 		Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
 		primaryStage.setTitle("Effort Logger");
-		primaryStage.setScene(new Scene(root, 300, 300));
+		primaryStage.setScene(new Scene(root, 600, 600));
 		primaryStage.show();
 
 	}
@@ -64,6 +64,11 @@ public class Main extends Application {
 	public void setCurrentUser(UserInfo u)
 	{
 		currentUser = u;
+	}
+	
+	public void addUser(UserInfo u)
+	{
+		users.add(u);
 	}
 	
 	public static void main(String[] args) {
