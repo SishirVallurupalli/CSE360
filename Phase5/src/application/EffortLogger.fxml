@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -13,23 +15,34 @@
       <AnchorPane prefHeight="708.0" prefWidth="856.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="logout" layoutX="466.0" layoutY="85.0" mnemonicParsing="false" onAction="#LogOut" text="Log out" />
-            <Button fx:id="startTask" layoutX="26.0" layoutY="306.0" mnemonicParsing="false" onAction="#startTask" text="Start Task" />
-            <Button fx:id="endTask" layoutX="135.0" layoutY="306.0" mnemonicParsing="false" onAction="#endTask" text="End Task" />
+            <Button fx:id="startTask" layoutX="29.0" layoutY="273.0" mnemonicParsing="false" onAction="#startTask" text="Start Task" />
+            <Button fx:id="endTask" layoutX="138.0" layoutY="273.0" mnemonicParsing="false" onAction="#endTask" text="End Task" />
             <ComboBox fx:id="comboBox" layoutX="30.0" layoutY="118.0" prefWidth="150.0" promptText="Choose a Project" />
-            <TextField fx:id="newTask" layoutX="105.0" layoutY="239.0" promptText="Add a Project" />
-            <Label layoutX="26.0" layoutY="243.0" text="New Project:" />
-            <Button fx:id="addTask" layoutX="455.0" layoutY="239.0" mnemonicParsing="false" onAction="#addInputToComboBox" text="Add Project" />
-            <Label fx:id="time" layoutX="332.0" layoutY="310.0" text="0" />
-            <Label layoutX="237.0" layoutY="311.0" text="Time Spent" />
-            <Label layoutX="278.0" layoutY="31.0" text="Effort Console:">
+            <TextField fx:id="newTask" layoutX="108.0" layoutY="206.0" promptText="Add a Project" />
+            <Label layoutX="29.0" layoutY="210.0" text="New Project:" />
+            <Button fx:id="addTask" layoutX="458.0" layoutY="206.0" mnemonicParsing="false" onAction="#addInputToComboBox" text="Add Project" />
+            <Label fx:id="time" layoutX="339.0" layoutY="299.0" text="0" />
+            <Label layoutX="236.0" layoutY="299.0" text="Time Spent" />
+            <Label layoutX="224.0" layoutY="33.0" text="Effort Console:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
             <Label layoutX="31.0" layoutY="89.0" text="1. Select Project" />
-            <Label layoutX="26.0" layoutY="202.0" text="2. Add a New Project or Start the Task" />
-            <ComboBox fx:id="categories" layoutX="286.0" layoutY="239.0" prefWidth="150.0" promptText="Choose Category" />
-            <Button fx:id="edit" layoutX="390.0" layoutY="85.0" mnemonicParsing="false" text="Edit" />
+            <Label layoutX="29.0" layoutY="169.0" text="2. Add a New Project or Start the Task" />
+            <ComboBox fx:id="categories" layoutX="289.0" layoutY="206.0" prefWidth="150.0" promptText="Choose Category" />
+            <Button fx:id="refresh" layoutX="479.0" layoutY="269.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
+            <TableView fx:id="tableView" layoutX="29.0" layoutY="337.0" prefHeight="258.0" prefWidth="515.0">
+              <columns>
+                <TableColumn fx:id="userNameColumn" prefWidth="106.0" text="UserName" />
+                <TableColumn fx:id="projectNameColumn" prefWidth="154.0" text="Project Name" />
+                  <TableColumn fx:id="projectTypeColumn" minWidth="0.0" prefWidth="136.0" text="Project Type" />
+                  <TableColumn fx:id="timeColumn" prefWidth="118.0" text="Time" />
+              </columns>
+            </TableView>
+            <Label layoutX="230.0" layoutY="273.0" text="Task Started: " />
+            <Label fx:id="taskStarted" layoutX="328.0" layoutY="273.0" />
+            <Button layoutX="401.0" layoutY="269.0" mnemonicParsing="false" onAction="#deleteInput" text="Remove" />
          </children>
       </AnchorPane>
    </center>
