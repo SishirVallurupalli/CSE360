@@ -114,8 +114,7 @@ private TableColumn<Defect, String> type;
 
 	@FXML
 	void goToEffortLogger(ActionEvent event) throws IOException {
-	    Main m = new Main();
-	    m.changeScene("EffortLogger.fxml");
+	    changeScene("EffortLogger.fxml");
 	}
 	
 	@FXML
