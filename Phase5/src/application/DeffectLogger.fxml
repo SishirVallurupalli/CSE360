@@ -3,29 +3,39 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="544.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DefectLogger">
-   <top>
-      <AnchorPane prefHeight="340.0" prefWidth="555.0" BorderPane.alignment="CENTER">
+<BorderPane prefHeight="708.0" prefWidth="864.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DefectLogger">
+   <bottom>
+      <AnchorPane prefHeight="708.0" prefWidth="856.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="endTask" layoutX="362.0" layoutY="148.0" mnemonicParsing="false" onAction="#addInput" text="Create New Defect" />
+            <Button fx:id="endTask" layoutX="381.0" layoutY="148.0" mnemonicParsing="false" onAction="#addInput" text="Create" />
             <Label layoutX="28.0" layoutY="49.0" text="1 Select Preject" />
 <ComboBox fx:id="comboBox" layoutX="17.0" layoutY="76.0" prefWidth="150.0" promptText="Choose a project" />
             <Label layoutX="19.0" layoutY="116.0" text="2. Select one defect to make it the current defect or press create new defect" />
             <ComboBox fx:id="comboBox1" layoutX="28.0" layoutY="148.0" prefWidth="150.0" promptText="No defect selected" />
-            <Button fx:id="Button1" layoutX="27.0" layoutY="192.0" mnemonicParsing="false" onAction="#deleteInput" text="Delete the Current Defect" />
-            <Button fx:id="addTask11" layoutX="315.0" layoutY="246.0" mnemonicParsing="false" onAction="#goToEffortLogger" text="Proceed to the Effort Log Console" />
+            <Button fx:id="Button1" layoutX="38.0" layoutY="383.0" mnemonicParsing="false" onAction="#deleteInput" text="Edit" />
+            <Button fx:id="addTask11" layoutX="339.0" layoutY="217.0" mnemonicParsing="false" onAction="#goToEffortLogger" text="Proceed to the Effort Log Console" />
             <Label layoutX="195.0" layoutY="-1.0" text="Defect Console">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
             <TextField fx:id="textInput" layoutX="205.0" layoutY="148.0" />
+            <TableView fx:id="tableView" layoutX="133.0" layoutY="278.0" prefHeight="259.0" prefWidth="401.0">
+              <columns>
+                  <TableColumn fx:id="username" prefWidth="75.0" text="Username" />
+                <TableColumn fx:id="type" prefWidth="75.0" text="Project Type" />
+                <TableColumn fx:id="details" prefWidth="250.0" text="Details" />
+              </columns>
+            </TableView>
+            <Button layoutX="31.0" layoutY="317.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
          </children>
       </AnchorPane>
-   </top>
+   </bottom>
 </BorderPane>
