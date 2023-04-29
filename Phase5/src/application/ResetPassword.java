@@ -53,6 +53,9 @@ public class ResetPassword {
 				found = true;
 			}
 		}
+		username.clear();
+		password.clear();
+		empCode.clear();
 		if (!found)
 			wrongLogIn.setText("Reset Unsuccesful");
 	}
