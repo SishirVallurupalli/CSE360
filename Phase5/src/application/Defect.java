@@ -1,4 +1,6 @@
-
+//Name : Mohammad Aljohany
+/* This class This class represents a Defect object in the defect logging application. It contains three properties: type, details, and username, which describe the type of defect,
+ the details of the defect, and the username of the person who logged the defect.*/
 package application;
 
 import javafx.beans.property.SimpleStringProperty;

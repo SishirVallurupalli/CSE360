@@ -1,3 +1,6 @@
+//Name : Mohammad Aljohany
+// This is the main class for the Defect Logger application allows users to log and manage defects.
+
 package application;
 
 import java.io.IOException;
@@ -86,20 +89,37 @@ private TableColumn<Defect, String> type;
  }
 
 
-	@FXML
-	void addInput(ActionEvent event) {
-	    String projectType = comboBox.getValue();
-	    String details = textInput.getText();
-	    Main m = new Main();
-	    String username = m.getUserName();
-	    
-	    Defect projectDetails = new Defect(projectType, details, username);
-	    defectList.add(projectDetails); 
-	    tableView.getItems().add(projectDetails);
-	    System.out.println("Project Type: " + projectType + ", Details: " + details + ", Username: " + username); // Add this line
-	    textInput.clear();
-	    tableView.getSelectionModel().select(projectDetails);
-	}
+ @FXML
+ void addInput(ActionEvent event) {
+	    String selectedDetails = comboBox1.getSelectionModel().getSelectedItem();
+	    if(selectedDetails == null) {
+	    	 String projectType = comboBox.getValue();
+	         String details = textInput.getText();
+	         Main m = new Main();
+	         String username = m.getUserName();
+	         
+	         Defect projectDetails = new Defect(projectType, details, username);
+	         defectList.add(projectDetails); 
+	         tableView.getItems().add(projectDetails);
+	         comboBox1.getItems().add(details); // add the details to comboBox1 items list
+	         System.out.println("Project Type: " + projectType + ", Details: " + details + ", Username: " + username);
+	         textInput.clear();
+	         tableView.getSelectionModel().select(projectDetails);
+	       
+	    }
+	    else {
+	    	
+	    	 String projectType = comboBox.getValue();
+		        Main m = new Main();
+		        String username = m.getUserName();
+		        String defectDetails = textInput.getText().isEmpty() ? selectedDetails : textInput.getText();
+		        Defect selectedDefect = new Defect(projectType, defectDetails, username);
+		        tableData.add(selectedDefect);
+	    	
+    
+	    }
+ }
+
 
 
 
@@ -125,6 +145,18 @@ private TableColumn<Defect, String> type;
             System.out.println("Username: " + defect.getUsername() + ", Details: " + defect.getDetails() + ", Type: " + defect.getType());
         }
 	}
+
+	@FXML
+	void select(ActionEvent event) {
+	    String selectedDetails = comboBox1.getSelectionModel().getSelectedItem();
+	    String projectType = comboBox.getValue();
+	    Main m = new Main();
+	    String username = m.getUserName();
+	    Defect selectedDefect = new Defect(projectType, selectedDetails, username);
+	    tableData.add(selectedDefect);
+	}
+
+
 
 
 

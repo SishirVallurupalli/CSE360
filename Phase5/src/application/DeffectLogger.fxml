@@ -19,7 +19,7 @@
 <ComboBox fx:id="comboBox" layoutX="17.0" layoutY="76.0" prefWidth="150.0" promptText="Choose a project" />
             <Label layoutX="19.0" layoutY="116.0" text="2. Select one defect to make it the current defect or press create new defect" />
             <ComboBox fx:id="comboBox1" layoutX="28.0" layoutY="148.0" prefWidth="150.0" promptText="No defect selected" />
-            <Button fx:id="Button1" layoutX="67.0" layoutY="383.0" mnemonicParsing="false" onAction="#deleteInput" text="Delete" />
+            <Button fx:id="Button1" layoutX="67.0" layoutY="308.0" mnemonicParsing="false" onAction="#deleteInput" text="Delete" />
             <Button fx:id="addTask11" layoutX="339.0" layoutY="217.0" mnemonicParsing="false" onAction="#goToEffortLogger" text="Proceed to the Effort Log Console" />
             <Label layoutX="195.0" layoutY="-1.0" text="Defect Console">
                <font>
@@ -34,7 +34,6 @@
                 <TableColumn fx:id="details" prefWidth="250.0" text="Details" />
               </columns>
             </TableView>
-            <Button layoutX="74.0" layoutY="322.0" mnemonicParsing="false" onAction="#refresh" text="Edit" />
          </children>
       </AnchorPane>
    </bottom>
