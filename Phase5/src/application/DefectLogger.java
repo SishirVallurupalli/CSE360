@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
@@ -21,6 +22,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 
@@ -46,6 +48,9 @@ private TableColumn<Defect, String> details;
 private TableColumn<Defect, String> type;
  ObservableList<Defect> tableData = FXCollections.observableArrayList();
 
+ @FXML
+ private Button refresh;
+ 
  @Override
  public void initialize(URL url, ResourceBundle rb) {
      comboBox.setItems(FXCollections.observableArrayList("Project", "Business"));
@@ -54,20 +59,30 @@ private TableColumn<Defect, String> type;
      type.setCellFactory(TextFieldTableCell.forTableColumn());
      type.setOnEditCommit(event -> {
          event.getTableView().getItems().get(event.getTablePosition().getRow()).setType(event.getNewValue());
+
      });
      details.setCellValueFactory(new PropertyValueFactory<Defect , String>("details"));
      details.setCellFactory(TextFieldTableCell.forTableColumn());
      details.setOnEditCommit(event -> {
          event.getTableView().getItems().get(event.getTablePosition().getRow()).setDetails(event.getNewValue());
+
      });
      username.setCellValueFactory(new PropertyValueFactory<Defect , String>("username"));
      username.setCellFactory(TextFieldTableCell.forTableColumn());
      username.setOnEditCommit(event -> {
          event.getTableView().getItems().get(event.getTablePosition().getRow()).setUsername(event.getNewValue());
+
      });
 
      tableView.setEditable(true);
      tableView.setItems(tableData);
+     tableView.setOnKeyPressed(event -> {
+         if (event.getCode().equals(KeyCode.ENTER)) {
+             tableView.edit(tableView.getSelectionModel().getSelectedIndex(), null);
+         } else if (event.getCode().equals(KeyCode.ESCAPE)) {
+             tableView.getSelectionModel().getSelectedItem();
+         }
+     });
  }
 
 
@@ -75,16 +90,14 @@ private TableColumn<Defect, String> type;
 	void addInput(ActionEvent event) {
 	    String projectType = comboBox.getValue();
 	    String details = textInput.getText();
-	    String username = "John";
-
+	    Main m = new Main();
+	    String username = m.getUserName();
+	    
 	    Defect projectDetails = new Defect(projectType, details, username);
 	    defectList.add(projectDetails); 
 	    tableView.getItems().add(projectDetails);
 	    System.out.println("Project Type: " + projectType + ", Details: " + details + ", Username: " + username); // Add this line
-
 	    textInput.clear();
-
-	    // Select the newly added item
 	    tableView.getSelectionModel().select(projectDetails);
 	}
 
@@ -92,22 +105,28 @@ private TableColumn<Defect, String> type;
 
 	@FXML
 	void deleteInput(ActionEvent event) {
-	    comboBox1.getItems().remove(comboBox1.getSelectionModel().getSelectedItem());
+	    Defect selectedDefect = tableView.getSelectionModel().getSelectedItem();
+	    if (selectedDefect != null) {
+	        tableView.getItems().remove(selectedDefect);
+	        defectList.remove(selectedDefect);
+	    }
 	}
+
 	@FXML
 	void goToEffortLogger(ActionEvent event) throws IOException {
 	    Main m = new Main();
 	    m.changeScene("EffortLogger.fxml");
 	}
+	
 	@FXML
 	void refresh(ActionEvent event) {
-	    tableData.clear();
-
-	   
-	    for (Defect defect : defectList) {
-	        tableData.add(defect);
-	    }
+		for (Defect defect : tableData) {
+            // Display updated values
+            System.out.println("Username: " + defect.getUsername() + ", Details: " + defect.getDetails() + ", Type: " + defect.getType());
+        }
 	}
+
+
 
 	public void start(Stage primaryStage) throws Exception{
 		stg = primaryStage;
