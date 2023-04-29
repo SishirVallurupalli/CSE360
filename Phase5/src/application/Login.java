@@ -1,5 +1,4 @@
 ///Author: Sishir Vallurupalli
-///Author: Sishir Vallurupalli
 package application;
 
 import javafx.application.Application;
