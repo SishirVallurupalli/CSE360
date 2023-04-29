@@ -72,7 +72,7 @@ public class Main extends Application {
 		users = new ArrayList<UserInfo>();
 		UserInfo user = new UserInfo("admin", "123", "123");
 		users.add(user);
-		currentUser = new UserInfo();
+		currentUser = null;
 		launch(args);
 	}
 	

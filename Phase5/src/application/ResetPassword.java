@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import java.util.ArrayList;
+
 
 public class ResetPassword {
 	
@@ -36,9 +38,22 @@ public class ResetPassword {
 	
 	public void resetPassowrd(ActionEvent event) throws IOException{
 		Main m = new Main();
-		if (m.getUserName().equals(username.getText().toString()) && (m.getEmpCode().equals(empCode.getText().toString())))
+		ArrayList<UserInfo> users = m.getUsers();
+		
+		String us = username.getText().toString();
+		String pass = password.getText().toString();
+		String ec = empCode.getText().toString();
+		boolean found = false;
+		for (int x = 0; x < users.size(); x++)
 		{
-			m.setPassword(password.getText().toString());
+			if (us.equals(users.get(x).getUserName()) && ec.equals(users.get(x).getEmpCode()))
+			{
+				users.get(x).setPassword(pass);
+				wrongLogIn.setText("Reset Succesful");
+				found = true;
+			}
 		}
+		if (!found)
+			wrongLogIn.setText("Reset Unsuccesful");
 	}
 }
