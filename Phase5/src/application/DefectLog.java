@@ -1,4 +1,5 @@
-# Ahmed Alyahya
+package application;
+//Ahmed Alyahya
 public class DefectLog {
     private String projectType;
     private String defectType;
