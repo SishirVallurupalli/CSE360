@@ -1,6 +1,4 @@
 //Author: Sishir Vallurupalli
-
-
 package application;
 	
 import java.io.IOException;
@@ -71,6 +69,8 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		users = new ArrayList<UserInfo>();
 		UserInfo user = new UserInfo("admin", "123", "123");
+		UserInfo user2 = new UserInfo("J", "1234", "1234");
+		users.add(user2);
 		users.add(user);
 		currentUser = null;
 		launch(args);
