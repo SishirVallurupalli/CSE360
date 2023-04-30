@@ -1,3 +1,5 @@
+// Author: Aditya Krishna
+
 package application;
 
 import java.io.IOException;
@@ -64,7 +66,6 @@ public class EffortLogger implements Initializable{
 	
 	
 	private ArrayList<EffortLog> effortList = new ArrayList<>();
-	//Dictionary<String, EffortLog> tasks = new Hashtable<>(); 
 	ObservableList<EffortLog> tableData = FXCollections.observableArrayList();
 	long startTime;
 	
@@ -113,6 +114,7 @@ public class EffortLogger implements Initializable{
 		time.setText((int) elapsedMinutes + " minutes and " + secondsDisplay + " seconds");
 	}
 
+	//function that refreshes the screen so that the time is logged into the table correctly
 	public void refresh(ActionEvent event)
 	{
 		tableData.clear();
@@ -124,7 +126,8 @@ public class EffortLogger implements Initializable{
 		
 		tableView.refresh();
 	}
-
+	
+	//allows the user to delete an inputed sequence from the table
 	public void deleteInput(ActionEvent event)
 	{
 		int selectID = tableView.getSelectionModel().getSelectedIndex();
@@ -150,6 +153,7 @@ public class EffortLogger implements Initializable{
 		timeColumn.setCellValueFactory(new PropertyValueFactory<EffortLog, Double>("Time"));
 		timeColumn.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
 
+		//allows for the user to edit the type of project and the name of the project
 		projectTypeColumn.setOnEditCommit(event -> {
          event.getTableView().getItems().get(event.getTablePosition().getRow()).setProjectType(event.getNewValue());
      	});

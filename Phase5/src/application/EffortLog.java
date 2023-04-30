@@ -1,3 +1,5 @@
+// Author: Aditya Krishna
+
 package application;
 
 public class EffortLog {
