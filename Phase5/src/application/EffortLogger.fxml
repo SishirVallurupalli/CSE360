@@ -43,6 +43,7 @@
             <Label layoutX="230.0" layoutY="273.0" text="Task Started: " />
             <Label fx:id="taskStarted" layoutX="328.0" layoutY="273.0" />
             <Button layoutX="401.0" layoutY="269.0" mnemonicParsing="false" onAction="#deleteInput" text="Remove" />
+            <Button layoutX="314.0" layoutY="85.0" mnemonicParsing="false" onAction="#goToDefectLogger" text="Go To Defect Console" />
          </children>
       </AnchorPane>
    </center>

@@ -1,5 +1,5 @@
-// Author: Aditya Krishna
-
+// Author: Anuj Kamasamudram
+// Authot: Aditya Krishna
 package application;
 
 import java.io.IOException;
@@ -66,6 +66,7 @@ public class EffortLogger implements Initializable{
 	
 	
 	private ArrayList<EffortLog> effortList = new ArrayList<>();
+	//Dictionary<String, EffortLog> tasks = new Hashtable<>(); 
 	ObservableList<EffortLog> tableData = FXCollections.observableArrayList();
 	long startTime;
 	
@@ -73,12 +74,14 @@ public class EffortLogger implements Initializable{
 	String username = m.getUserName();
 	
 	
+	// Button to Log out and return to the title screen
 	public void LogOut(ActionEvent event) throws IOException
 	{
 		Main m = new Main();
 		m.changeScene("Sample.fxml");
 	}
 	
+	// Adds Item from the text field and the category from the combobox to the arraylist of logs
 	public void addInputToComboBox(ActionEvent event) throws IOException 
 	{
 		comboBox.getItems().add(newTask.getText());
@@ -89,6 +92,7 @@ public class EffortLogger implements Initializable{
 		newTask.clear();
 	}
 	
+	// Starts the project and saves the time when the button is clicked
 	public void startTask(ActionEvent event) throws IOException 
 	{
 		startTime = System.currentTimeMillis();
@@ -96,6 +100,7 @@ public class EffortLogger implements Initializable{
 		taskStarted.setText(comboBox.getValue());
 	}
 	
+	// tracks the time when the button was clicked again to find the time elapsed and display that
 	public void endTask(ActionEvent event) throws IOException {
 		double timeElapsed = System.currentTimeMillis() - startTime;
 		startTime = 0;
@@ -114,7 +119,7 @@ public class EffortLogger implements Initializable{
 		time.setText((int) elapsedMinutes + " minutes and " + secondsDisplay + " seconds");
 	}
 
-	//function that refreshes the screen so that the time is logged into the table correctly
+	// refresh the data in the table view to see updates
 	public void refresh(ActionEvent event)
 	{
 		tableData.clear();
@@ -127,19 +132,32 @@ public class EffortLogger implements Initializable{
 		tableView.refresh();
 	}
 	
-	//allows the user to delete an inputed sequence from the table
+	// deletes an input in the table view and from the arraylist too
 	public void deleteInput(ActionEvent event)
 	{
 		int selectID = tableView.getSelectionModel().getSelectedIndex();
 		tableView.getItems().remove(selectID);
+		effortList.remove(selectID);
+		System.out.println(selectID);
+		System.out.println(effortList);
+	}
+	
+	// button to go to the defect console scene
+	@FXML
+	void goToDefectLogger(ActionEvent event) throws IOException {
+	    Main m = new Main();
+	    m.changeScene("DeffectLogger.fxml");
 	}
 
-
+	
+	// initializes the table and assigns the table columns that can be edited
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		categories.setItems(FXCollections.observableArrayList("Hardware", "Project Management", "Interface"));
-		comboBox.setItems(FXCollections.observableArrayList("Project"));
+		//comboBox.setItems(FXCollections.observableArrayList("Project"));
 		tableView.setItems(tableData);
+		
+		categories.setEditable(true);
 		
 		projectTypeColumn.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("ProjectType"));
 		projectTypeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -153,13 +171,18 @@ public class EffortLogger implements Initializable{
 		timeColumn.setCellValueFactory(new PropertyValueFactory<EffortLog, Double>("Time"));
 		timeColumn.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
 
-		//allows for the user to edit the type of project and the name of the project
 		projectTypeColumn.setOnEditCommit(event -> {
-         event.getTableView().getItems().get(event.getTablePosition().getRow()).setProjectType(event.getNewValue());
+			event.getTableView().getItems().get(event.getTablePosition().getRow()).setProjectType(event.getNewValue());
+			EffortLog temp = effortList.get(event.getTablePosition().getRow());
+			temp.setProjectType(event.getNewValue());
+			effortList.set(event.getTablePosition().getRow(), temp);
      	});
 
 		projectNameColumn.setOnEditCommit(event -> {
-         event.getTableView().getItems().get(event.getTablePosition().getRow()).setProjectName(event.getNewValue());
+			event.getTableView().getItems().get(event.getTablePosition().getRow()).setProjectName(event.getNewValue());
+			EffortLog temp = effortList.get(event.getTablePosition().getRow());
+			temp.setProjectName(event.getNewValue());
+			effortList.set(event.getTablePosition().getRow(), temp);
      	});
 		
 		tableView.setEditable(true);
